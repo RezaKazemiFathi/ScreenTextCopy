@@ -22,6 +22,10 @@ A PDF viewer that fights you. ScreenTextCopy reads all of it, locally.
 
 No prerequisites. No .NET install. No Tesseract install. One file, one click.
 
+## 🎬 See ScreenTextCopy in action
+
+![ScreenTextCopy Demo](docs/assets/demo.gif)
+
 </div>
 
 ---
