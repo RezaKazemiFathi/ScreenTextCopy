@@ -28,6 +28,20 @@ No prerequisites. No .NET install. No Tesseract install. One file, one click.
 
 </div>
 
+## 📸 App Screenshots
+
+### Select text from anywhere
+
+![ScreenTextCopy Image](docs/assets/screenshot-1.png)
+
+### OCR and translation results
+
+![ScreenTextCopy Translation](docs/assets/screenshot-2.png)
+
+### Functionality
+
+![ScreenTextCopy Image](docs/assets/screenshot-3.png)
+
 ---
 
 ## Table of contents
