@@ -28,6 +28,20 @@
 
 </div>
 
+## 📸 تصاویر محیط برنامه
+
+### انتخاب متن از هر نقطه
+
+![تصویر ScreenTextCopy](docs/assets/screenshot-1.png)
+
+### نتیجه OCR و ترجمه
+
+![ترجمه ScreenTextCopy](docs/assets/screenshot-2.png)
+
+### عملکرد
+
+![تصویر ScreenTextCopy](docs/assets/screenshot-3.png)
+
 ---
 
 <div dir="rtl">
