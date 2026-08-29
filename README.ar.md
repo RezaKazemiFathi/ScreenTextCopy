@@ -23,6 +23,7 @@
 بلا متطلبات مسبقة. بلا تثبيت .NET. بلا تثبيت Tesseract. ملف واحد ونقرة واحدة.
 
 شاهد ScreenTextCopy أثناء العمل
+
 ![ScreenTextCopy Demo](docs/assets/demo.gif)
 </div>
 
