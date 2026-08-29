@@ -1,362 +1,612 @@
 <div align="center">
 
-<img src="src/ScreenTextCopy/Assets/logo.png" alt="ScreenTextCopy logo" width="120" />
+<img src="src/ScreenTextCopy/Assets/logo.png" alt="ScreenTextCopy" width="120" />
 
-# ScreenTextCopy
+ScreenTextCopy
 
-**Grab text from anywhere on your Windows screen — then copy, translate, or send it to your phone.**
+Grab text from anywhere on your Windows screen — then copy, translate, or send it to your phone.
 
 Error dialogs that won't let you select text. Text baked into an image. Subtitles in a video.
-A PDF viewer that fights you. **ScreenTextCopy reads it all locally.**
+A PDF viewer that fights you. ScreenTextCopy reads all of it, locally.
 
-[![Build](https://github.com/rezakazemifathi/ScreenTextCopy/actions/workflows/build.yml/badge.svg)](https://github.com/rezakazemifathi/ScreenTextCopy/actions/workflows/build.yml)
-[![Latest Release](https://img.shields.io/github/v/release/rezakazemifathi/ScreenTextCopy?display_name=tag&sort=semver)](https://github.com/rezakazemifathi/ScreenTextCopy/releases/latest)
-[![Downloads](https://img.shields.io/github/downloads/rezakazemifathi/ScreenTextCopy/total)](https://github.com/rezakazemifathi/ScreenTextCopy/releases)
-[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
-[![.NET 8](https://img.shields.io/badge/.NET-8.0-512BD4)](https://dotnet.microsoft.com/)
-[![Platform](https://img.shields.io/badge/Windows-10%20%7C%2011%20x64-0078D6)](#requirements)
 
-**English** · [فارسی](README.fa.md) · [العربية](README.ar.md)
 
-### ⬇️ [Download the latest release](https://github.com/rezakazemifathi/ScreenTextCopy/releases/latest)
 
-**No prerequisites. No separate .NET install. No separate Tesseract install. One installer, one click.**
+
+
+
+
+English · فارسی · العربية
+
+<br>
+
+<a href="https://github.com/rezakazemifathi/ScreenTextCopy/releases/latest">
+  <img src="https://img.shields.io/badge/⬇️%20Download%20Latest%20Release-2EA44F?style=for-the-badge" alt="Download Latest Release" />
+</a>
+<a href="https://github.com/rezakazemifathi/ScreenTextCopy/releases">
+  <img src="https://img.shields.io/badge/📦%20All%20Releases-0969DA?style=for-the-badge" alt="All Releases" />
+</a>
+<a href="docs/INSTALL.md">
+  <img src="https://img.shields.io/badge/📖%20Installation%20Guide-6F42C1?style=for-the-badge" alt="Installation Guide" />
+</a>
+
+<br><br>
+
+No prerequisites. No separate .NET install. No separate Tesseract install. One installer, one click.
+
+🎬 See ScreenTextCopy in action
+
+<img src="docs/assets/demo.gif" alt="ScreenTextCopy Demo" />
 
 </div>
 
----
+📑 Table of contents
 
-## 🎬 See ScreenTextCopy in action
+Why it exists
 
-![ScreenTextCopy demo](docs/assets/demo.gif)
+Features
 
-> **Note:** Add the application screenshots below to `docs/assets/` using the filenames shown in this README. The README is already prepared for them.
+Install
 
-## 📸 Screenshots
+Quick start
 
-### Select text from anywhere
+Translation providers
 
-![ScreenTextCopy capture](docs/assets/screenshot-capture.png)
+Network / proxy
 
-### OCR result and translation
+Privacy
 
-![ScreenTextCopy translation](docs/assets/screenshot-translation.png)
+Requirements
 
-### Settings and AI provider configuration
+Build from source
 
-![ScreenTextCopy settings](docs/assets/screenshot-settings.png)
+Documentation
 
-### Send recognized text to your phone
+Troubleshooting
 
-![ScreenTextCopy QR transfer](docs/assets/screenshot-qr.png)
+Contributing
 
----
+License
 
-## ✨ Why it exists
+Author & support
 
-Windows is full of text you cannot copy: an installer error, a scanned invoice, a screenshot,
-a game's dialogue, subtitles, or text inside a PDF viewer.
+✨ Why it exists
 
-ScreenTextCopy replaces manual retyping with one shortcut:
+Windows is full of text you cannot copy.
 
-**Press `Ctrl + Shift + X` → select an area → the text is recognized and copied to your clipboard.**
+An installer error you need to search for. A scanned invoice. A screenshot a colleague sent you. A game's dialogue in a language you don't read. Subtitles in a video. Text inside a PDF viewer.
+
+The usual answer is:
+
+Retype it by hand.
+
+ScreenTextCopy replaces that with a single shortcut:
+
+Press Ctrl + Shift + X → select an area → the text is recognized and copied to your clipboard.
 
 OCR runs locally on your computer, so the screen capture itself does not need to leave your device.
 
-## 🚀 Features
+🚀 Features
 
-| Feature | Description |
-|---|---|
-| 🖱️ **Capture anything** | Drag a box over any part of your screen, across windows and monitors. |
-| 🔒 **Offline OCR** | Tesseract OCR is bundled with the release build. Screen captures are processed locally. |
-| 📋 **Auto-copy** | Recognized text is automatically copied to the clipboard. |
-| 🌍 **Multiple OCR languages** | English, Persian and Arabic are bundled; additional languages can be installed from Settings. |
-| 🔤 **Mixed scripts** | Persian + English text can be recognized together with RTL/LTR handling. |
-| 🌐 **Translation** | Translate recognized text using the built-in free provider or an OpenAI-compatible AI endpoint. |
-| 🎮 **Overlay translation** | `Ctrl + Shift + Z` shows a floating translation panel next to the selected area. |
-| 🔁 **Automatic model failover** | If an AI model times out, another configured model can be tried automatically. |
-| 🌐 **Proxy support** | System proxy, direct connection, or manual HTTP/HTTPS/SOCKS proxy. |
-| 📱 **Send to phone** | Generate a local QR code and scan it with your phone. No account or upload is required. |
-| ⌨️ **Global hotkeys** | Shortcuts can be changed from Settings. |
-| 🎨 **Dark & light themes** | Follows Windows by default, with manual theme support. |
-| 🇬🇧 🇮🇷 **Bilingual UI** | English and Persian UI with RTL support. |
-| 🪟 **System tray** | Closing the main window keeps the application available in the Windows tray. |
 
----
 
-## 📥 Install
 
-### Recommended — Windows installer
 
-1. Open the **[latest release](https://github.com/rezakazemifathi/ScreenTextCopy/releases/latest)**.
-2. Download:
-   `ScreenTextCopy-Setup-<version>-win-x64.exe`
-3. Run the installer.
-4. If Windows SmartScreen appears because the application is not code-signed, select:
-   **More info → Run anyway**
-5. Finish the installation wizard.
+🖱️ Capture anything
 
-There is nothing else to install. The release package includes the required .NET runtime
-and Tesseract OCR components.
+Drag a box over any part of any window, at any DPI, on any monitor.
 
-### Portable version
+🔒 Offline OCR
 
-If you do not want to install the application:
+Tesseract 5 ships inside the app. Screenshots never touch the network during OCR.
 
-1. Download:
-   `ScreenTextCopy-<version>-win-x64-portable.zip`
-2. Extract the ZIP file.
-3. Run `ScreenTextCopy.exe`.
+📋 Auto-copy
 
----
+The recognized text lands on the clipboard the moment OCR finishes.
 
-## ⚡ Quick start
+🌍 14 OCR languages
 
-### Copy text from anywhere
+English, Persian, Arabic bundled; French, German, Spanish, Italian, Russian, Turkish, Chinese, Japanese, Korean, Hindi, Portuguese installable from Settings with a progress bar.
 
-1. Press **`Ctrl + Shift + X`**.
-2. The screen dims and the cursor becomes a crosshair.
-3. Drag around the text you want.
-4. Release the mouse button.
-5. ScreenTextCopy performs OCR locally.
-6. The recognized text is copied to your clipboard automatically.
+🔤 Mixed scripts
 
-### Translate text
+Persian + English in one line is recognized with correct RTL/LTR handling.
 
-After OCR finishes:
+🈯 Translate to 14 languages
 
-1. Select the target language.
-2. Click **Translate**.
-3. The translated text appears in the application.
+Use the free provider without an API key, or connect any OpenAI-compatible endpoint.
 
-### Translate inside games and videos
+🎮 In-place overlay mode
 
-Press **`Ctrl + Shift + Z`** and select the text area.
+Ctrl + Shift + Z translates a region into a floating popup pinned next to it — built for games, videos and subtitles.
 
-The translation appears in a floating panel near the selected region.
+🔁 Automatic model failover
 
----
+If one AI model times out, the next known model is tried automatically.
 
-## 🤖 Translation & AI providers
+🌐 Proxy aware
 
-ScreenTextCopy supports a free translation provider and custom OpenAI-compatible endpoints.
+System proxy, forced-direct, or manual http / https / socks4 / socks5 proxy — switchable at runtime.
 
-| | Free provider | Custom AI |
-|---|---|---|
-| API key | Not required | Your API key |
-| Endpoint | Built-in | Any OpenAI-compatible endpoint |
-| Model selection | Automatic | Manual / discovered from provider |
-| Best for | Short everyday translations | Better quality, long text, context and AI workflows |
+📱 Send to phone
 
-Compatible services can include OpenAI-compatible APIs such as OpenAI, OpenRouter, Groq,
-DeepSeek, Together, Azure OpenAI, Ollama, LM Studio, vLLM and similar providers.
+A locally generated QR code. No account, no server, no upload.
 
-For a custom provider, enter:
+⌨️ Rebindable global hotkeys
 
-- **Base URL**
-- **API key** (if required)
-- **Model**
+Both shortcuts are configurable and work while the app is hidden in the tray.
 
-Then use **Test connection** to verify the endpoint.
+🎨 Real dark & light themes
 
-### Automatic model failover
+Follows Windows by default, with proper contrast in both.
 
-If enabled, a timed-out model can be followed by another configured model.
+🇬🇧 🇮🇷 Bilingual UI
 
-Authentication errors such as **401/403** are not treated as transient timeouts, so the app does
-not repeatedly retry an invalid API key across every model.
+Live English ⇄ Persian switching with full right-to-left layout and the bundled Vazirmatn font.
 
-> Your API key is stored locally in `%AppData%\ScreenTextCopy\settings.json`.
-> It is not intentionally logged or displayed in error messages and is sent only to the endpoint
-> you configure.
+🪟 Tray resident
 
----
+Closing the window keeps it one keystroke away instead of quitting.
 
-## 🌐 Network & proxy
+📥 Install
 
-If an AI endpoint cannot be reached, check:
+Recommended — Windows installer
 
-**Settings → Translation → Network**
+Open the latest release.
+
+Download ScreenTextCopy-Setup-<version>-win-x64.exe.
+
+Run the installer.
+
+If Windows SmartScreen appears because the application is not code-signed, select More info → Run anyway.
+
+Finish the installation wizard.
+
+There is nothing else to install. The .NET 8 runtime and the Tesseract OCR engine are included in the release package.
+
+The application is installed per-user under:
+
+%LocalAppData%\Programs\ScreenTextCopy
+
+Alternative — portable version
+
+Download:
+
+ScreenTextCopy-<version>-win-x64-portable.zip
+
+Extract it anywhere — including a USB drive — and run:
+
+ScreenTextCopy.exe
+
+Nothing is written outside the portable folder except your settings under:
+
+%AppData%\ScreenTextCopy
+
+🔐 Verify the download
+
+The release also contains SHA256SUMS.txt.
+
+Example:
+
+Get-FileHash .\ScreenTextCopy-Setup-2.0.0-win-x64.exe -Algorithm SHA256
+
+Then compare the resulting SHA256 hash with the value in SHA256SUMS.txt.
+
+For the complete installation walkthrough:
+
+📖 Installation guide · راهنمای فارسی
+
+⚡ Quick start
+
+1. Capture and copy text
+
+Press:
+
+Ctrl + Shift + X
+
+The screen dims and the cursor becomes a crosshair.
+
+Drag a rectangle around the text and release.
+
+OCR runs locally. The recognized text appears in the application and is automatically copied to the clipboard.
+
+2. Translate
+
+After OCR finishes, choose a target language and press:
+
+Translate
+
+3. Send text to your phone
+
+Choose:
+
+Send to phone
+
+ScreenTextCopy generates a QR code locally. Scan it with your phone to transfer the recognized text.
+
+4. Translate directly over games and videos
+
+For games, videos and subtitles, press:
+
+Ctrl + Shift + Z
+
+The translation appears in a small floating panel next to the selected region, with a Retry option.
+
+5. Customize everything from Settings
+
+Settings contains the controls for:
+
+Theme
+
+UI language
+
+OCR languages
+
+Global hotkeys
+
+Translation provider
+
+AI model
+
+Network / proxy
+
+Other application options
+
+More:
+
+📖 Usage guide · راهنمای استفاده
+
+🌐 Translation providers
+
+
+
+Free
+
+Custom AI
+
+API key
+
+Not needed
+
+Yours
+
+Backend
+
+MyMemory
+
+Any OpenAI-compatible /chat/completions
+
+Works with
+
+—
+
+OpenAI, OpenRouter, Groq, DeepSeek, Together, Azure OpenAI, Ollama, LM Studio, vLLM, …
+
+Quality
+
+Fine for short text
+
+Better for idioms and longer passages
+
+Model picker
+
+—
+
+Auto-discovered from the provider's /models route
+
+Custom AI provider
+
+Enter:
+
+Base URL — for example https://api.openai.com/v1
+
+API key — optional depending on the provider
+
+Model
+
+Then press:
+
+Test connection
+
+The application reports reachability, latency and the number of models it found. The model picker is then populated automatically and your selection is remembered across restarts.
+
+Automatic model failover
+
+If automatically switch to another model if one times out is enabled, a stalled model does not necessarily mean a failed translation.
+
+The application can try the next known model automatically.
+
+Authentication errors such as 401/403 are not treated as transient timeouts, so an invalid API key is not repeatedly retried across every model.
+
+API key storage: Your API key is stored in %AppData%\ScreenTextCopy\settings.json on your own computer. It is not intentionally logged or displayed in error messages and is sent only to the endpoint you configure.
+
+🌐 Network / proxy
+
+Some AI endpoints may be unreachable depending on your network configuration.
+
+The most common local error is:
+
+No connection could be made because the target machine actively refused it
+
+Open:
+
+Settings → Translation → Network
 
 Available modes:
 
-| Mode | Description |
-|---|---|
-| **System proxy** | Uses the Windows system proxy. |
-| **Direct** | Ignores the system proxy. Useful when a stale proxy is configured. |
-| **Manual** | Uses a proxy address you specify, such as `socks5://127.0.0.1:10808`. |
+Mode
 
-Network settings are applied to subsequent requests without requiring an application restart.
+What it does
 
----
+System proxy
 
-## 🔒 Privacy
+Uses the Windows system proxy, like your browser.
 
-ScreenTextCopy is designed around local OCR.
+Direct
 
-- **OCR is local.** Screen captures used for OCR are processed on your computer.
-- **QR transfer is local.** The QR code is generated locally; the recognized text is not uploaded to a server.
-- **No account is required.**
-- **No telemetry or analytics are intentionally included.**
-- When you use translation, the text you explicitly submit is sent to the provider you selected.
-- Additional OCR language packs may be downloaded when you choose to install them.
+Ignores the system proxy entirely. Useful when a stale proxy is configured system-wide.
 
-For the exact implementation and third-party components, see the project source and
-`THIRD-PARTY-NOTICES.md`.
+Manual
 
----
+Routes traffic through an address you specify.
 
-## 💻 Requirements
+Examples:
 
-### To run
+socks5://127.0.0.1:10808
 
-- Windows 10 (1809+) or Windows 11
-- 64-bit Windows
-- No separate .NET runtime required for the published self-contained release
-- No separate Tesseract installation required for the release package
+http://127.0.0.1:10809
 
-### To build
+The network setting is re-read for subsequent requests, so changing it does not require an application restart.
 
-- .NET 8 SDK
-- Inno Setup 6 — only when creating the Windows installer
+🔒 Privacy
 
----
+What is visible on your screen stays on your machine.
 
-## 🛠️ Build from source
+OCR is 100% local. Screen captures used for OCR are processed on your computer.
 
-```powershell
+Temporary capture data is cleaned up after OCR processing.
+
+Send to phone is local. The QR code is generated locally; the recognized text is not uploaded to a remote QR service.
+
+No account is required.
+
+No telemetry or analytics are intentionally included.
+
+When you use translation, the text you explicitly submit is sent to the provider you selected.
+
+Additional OCR language packs may be downloaded when you choose to install them.
+
+For the exact implementation and third-party components, see the source code and:
+
+THIRD-PARTY-NOTICES.md
+
+💻 Requirements
+
+To run
+
+Windows 10 (1809+) or Windows 11
+
+64-bit Windows
+
+No separate .NET runtime required for the published self-contained release
+
+No separate Tesseract installation required for the release package
+
+To build
+
+.NET 8 SDK
+
+Inno Setup 6 — only when producing the Windows installer
+
+🛠️ Build from source
+
+Clone the repository:
+
 git clone https://github.com/rezakazemifathi/ScreenTextCopy.git
 cd ScreenTextCopy
 
+Prepare the Tesseract engine:
+
 powershell -ExecutionPolicy Bypass -File scripts\fetch-tesseract.ps1
 
+Run the application:
+
 dotnet run --project src\ScreenTextCopy\ScreenTextCopy.csproj
-```
 
-### Create release artifacts
+Why isn't Tesseract in the repository?
 
-```powershell
+One of its binaries, libtesseract-5.dll, is approximately 106 MB — above GitHub's hard 100 MB per-file limit.
+
+Committing it would make the repository difficult or impossible to clone normally.
+
+scripts\fetch-tesseract.ps1 handles the development setup and downloads the required language data.
+
+Released builds already contain the required runtime and OCR components.
+
+📦 Producing release artifacts
+
+Run:
+
 powershell -ExecutionPolicy Bypass -File scripts\build-release.ps1 -Version 2.0.0
-```
 
 The script creates:
 
-```text
 release\
 ├── app\
 ├── ScreenTextCopy-2.0.0-win-x64-portable.zip
 ├── ScreenTextCopy-Setup-2.0.0-win-x64.exe
 └── SHA256SUMS.txt
-```
 
-The installer requires **Inno Setup 6**.
+File
 
----
+Purpose
 
-## 📦 Publishing a GitHub Release
+app\
 
-The **Download the latest release** button and release badges only work correctly after at least
-one GitHub Release has been published.
+Published self-contained application
 
-For version `2.0.0`:
+ScreenTextCopy-2.0.0-win-x64-portable.zip
 
-1. Push your code to GitHub.
-2. Run the release build script.
-3. Open the repository's **Releases** page.
-4. Click **Draft a new release**.
-5. Create/select the tag:
-   `v2.0.0`
-6. Set the release title:
-   `ScreenTextCopy v2.0.0`
-7. Upload these files from the `release\` folder:
-   - `ScreenTextCopy-Setup-2.0.0-win-x64.exe`
-   - `ScreenTextCopy-2.0.0-win-x64-portable.zip`
-   - `SHA256SUMS.txt`
-8. Publish the release.
+Unzip-and-run portable build
 
-**Important:** Do not leave the release as a draft. A draft release does not make
-`/releases/latest` available to normal visitors.
+ScreenTextCopy-Setup-2.0.0-win-x64.exe
 
-After publishing, the README's **Download the latest release** link will automatically point
-to the latest published release.
+One-click Windows installer
 
----
+SHA256SUMS.txt
 
-## 📚 Documentation
+SHA256 checksums
 
-| Document | Description |
-|---|---|
-| [Install guide](docs/INSTALL.md) · [فارسی](docs/INSTALL.fa.md) | Installation from download to first capture |
-| [Usage guide](docs/USAGE.md) · [فارسی](docs/USAGE.fa.md) | Features and settings |
-| [Troubleshooting](docs/TROUBLESHOOTING.md) · [فارسی](docs/TROUBLESHOOTING.fa.md) | Common errors and fixes |
-| [Build guide](docs/BUILD.md) | Building, publishing and packaging |
-| [Architecture](docs/architecture.md) | Project architecture |
-| [Source map](docs/source-map.md) | Project file map |
-| [Development](docs/development.md) | Development workflow |
-| [Publishing guide](docs/PUBLISH-TO-GITHUB.fa.md) | Persian GitHub publishing guide |
-| [Changelog](CHANGELOG.md) | Version history |
+For build and packaging details:
 
----
+📦 Build guide
 
-## 🧩 Troubleshooting
+🚀 Publishing a GitHub Release
 
-### `target machine actively refused it (127.0.0.1:10808)`
+The Download Latest Release button and release badges become meaningful after at least one published GitHub Release exists.
+
+For version 2.0.0:
+
+Push the repository to GitHub.
+
+Build the release artifacts.
+
+Open the repository's Releases page.
+
+Click Draft a new release.
+
+Create/select the tag:
+
+v2.0.0
+
+Set the release title:
+
+ScreenTextCopy v2.0.0
+
+Upload these files from release\:
+
+ScreenTextCopy-Setup-2.0.0-win-x64.exe
+ScreenTextCopy-2.0.0-win-x64-portable.zip
+SHA256SUMS.txt
+
+Click Publish release.
+
+Important
+
+Do not leave the release as a draft.
+
+A draft release is not available to normal visitors through:
+
+/releases/latest
+
+Once the release is published, the README's Download Latest Release button will automatically point to the latest published release.
+
+📚 Documentation
+
+Document
+
+Description
+
+Install guide · فارسی
+
+Step-by-step installation and first capture
+
+Usage guide · فارسی
+
+Features, shortcuts and settings
+
+Troubleshooting · فارسی
+
+Common errors and practical fixes
+
+Build guide
+
+Building, publishing and packaging
+
+Architecture
+
+Project architecture
+
+Source map
+
+Project file map
+
+Development
+
+Development workflow
+
+Publishing guide
+
+Persian GitHub publishing walkthrough
+
+Changelog
+
+Version history
+
+🧩 Troubleshooting
+
+target machine actively refused it (127.0.0.1:10808)
 
 A local proxy may be unavailable.
 
 Go to:
 
-**Settings → Translation → Network**
+Settings → Translation → Network
 
-Then try **Direct**, or configure your actual proxy address under **Manual**.
+Then try Direct, or configure your actual proxy address under Manual.
 
-### Translation returns the original text
+Translation returns the original text
 
 Check that the source and target languages are different.
 
-### Hotkey does nothing
+Hotkey does nothing
 
 Another application may already be using the shortcut.
 
 Change it from:
 
-**Settings → Global shortcut → Change**
+Settings → Global shortcut → Change
 
-For more issues, see [TROUBLESHOOTING.md](docs/TROUBLESHOOTING.md).
+For more issues, see:
 
----
+🛠️ Troubleshooting guide
 
-## 🤝 Contributing
+🤝 Contributing
 
 Issues and pull requests are welcome.
 
-Please read:
+Before contributing, please read:
 
-- [CONTRIBUTING.md](CONTRIBUTING.md)
-- [SECURITY.md](SECURITY.md)
+CONTRIBUTING.md
 
----
+SECURITY.md
 
-## 📄 License
+📄 License
 
-This project is licensed under the **MIT License**.
+This project is licensed under the MIT License.
 
-Third-party components retain their respective licenses. See
-[THIRD-PARTY-NOTICES.md](THIRD-PARTY-NOTICES.md).
+Third-party components retain their respective licenses.
 
----
+See:
 
-## 👨‍💻 Author & support
+THIRD-PARTY-NOTICES.md
 
-Built by **Reza Kazemi Fathi**.
+👨‍💻 Author & support
 
-- [GitHub](https://github.com/rezakazemifathi)
-- [Instagram](https://instagram.com/rkfcode)
-- [YouTube](https://youtube.com/rkfcode)
+Built by Reza Kazemi Fathi.
+
+
+
+
 
 If ScreenTextCopy saves you time, consider giving the repository a ⭐.
 
 Support the project:
 
-- [Daramet](https://daramet.com/RKFi)
-- [Donatr.ee](https://donatr.ee/rkfcode/)
+Daramet (IRR) · Donatr.ee (USD / crypto)
+
+<div align="center">
+
+ScreenTextCopy — Copy what Windows won't let you copy.
+
+⭐ Star the repository if you find it useful.
