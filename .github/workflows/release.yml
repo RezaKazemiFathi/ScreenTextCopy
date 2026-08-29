@@ -1,0 +1,142 @@
+# Release pipeline: pushing a tag such as v2.0.0 builds the self-contained
+# payload, the portable zip and the one-click installer, then publishes them as
+# GitHub Release assets.
+#
+# WHY THE ENGINE IS INSTALLED HERE INSTEAD OF COMMITTED
+#   libtesseract-5.dll is ~106 MB, above GitHub's hard 100 MB per-file limit, so
+#   the engine cannot live in the repository. The runner installs Tesseract, and
+#   fetch-tesseract.ps1 copies it into src\ScreenTextCopy\Tesseract exactly as a
+#   contributor would locally.
+#
+# If Chocolatey ever ships a Tesseract version this project has not been tested
+# against, build locally with scripts\build-release.ps1 and upload by hand
+# instead of trusting this workflow blindly.
+name: Release
+
+on:
+  push:
+    tags:
+      - 'v*'
+  workflow_dispatch:
+    inputs:
+      version:
+        description: 'Version to build, without the leading v (e.g. 2.0.0)'
+        required: true
+
+permissions:
+  # Needed to create the release and upload assets.
+  contents: write
+
+jobs:
+  release:
+    runs-on: windows-latest
+
+    steps:
+      - name: Check out the repository
+        uses: actions/checkout@v6
+
+      - name: Set up the .NET 8 SDK
+        uses: actions/setup-dotnet@v5
+        with:
+          dotnet-version: 8.0.x
+
+      - name: Work out the version number
+        id: version
+        shell: pwsh
+        run: |
+          if ('${{ github.event_name }}' -eq 'workflow_dispatch') {
+            $version = '${{ github.event.inputs.version }}'
+          } else {
+            # refs/tags/v2.0.0 -> 2.0.0
+            $version = '${{ github.ref_name }}' -replace '^v', ''
+          }
+          if ($version -notmatch '^\d+\.\d+\.\d+(\.\d+)?$') {
+            Write-Host "::error::'$version' is not a valid version. Tag releases as v<major>.<minor>.<patch>."
+            exit 1
+          }
+          "version=$version" | Out-File $env:GITHUB_OUTPUT -Append
+          Write-Host "Building version $version"
+
+      - name: Install the Tesseract 5 engine
+        run: choco install tesseract --no-progress --yes
+
+      - name: Install Inno Setup 6
+        run: choco install innosetup --no-progress --yes
+
+      - name: Stage the OCR engine and language data
+        run: powershell -ExecutionPolicy Bypass -File scripts\fetch-tesseract.ps1
+
+      - name: Build every release artifact
+        run: >
+          powershell -ExecutionPolicy Bypass -File scripts\build-release.ps1
+          -Version ${{ steps.version.outputs.version }}
+
+      - name: Confirm the artifacts exist
+        shell: pwsh
+        run: |
+          $version = '${{ steps.version.outputs.version }}'
+          foreach ($name in @(
+            "ScreenTextCopy-Setup-$version-win-x64.exe",
+            "ScreenTextCopy-$version-win-x64-portable.zip",
+            'SHA256SUMS.txt'
+          )) {
+            $path = Join-Path 'release' $name
+            if (-not (Test-Path -LiteralPath $path)) {
+              Write-Host "::error::Expected release asset is missing: $name"
+              exit 1
+            }
+            $mb = [math]::Round((Get-Item -LiteralPath $path).Length / 1MB, 1)
+            Write-Host "$name  ($mb MB)"
+          }
+
+      - name: Upload the artifacts to the workflow run
+        # Keeps a copy even if the release step is re-run or edited later.
+        uses: actions/upload-artifact@v4
+        with:
+          name: screentextcopy-${{ steps.version.outputs.version }}
+          path: |
+            release/*.exe
+            release/*.zip
+            release/SHA256SUMS.txt
+          if-no-files-found: error
+
+      - name: Publish the GitHub Release
+        # The GitHub CLI is preinstalled on the runner, so no third-party action
+        # is needed - one fewer dependency to audit and pin.
+        shell: pwsh
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          $version = '${{ steps.version.outputs.version }}'
+          $tag = "v$version"
+
+          $notes = @"
+## ScreenTextCopy $version
+
+**No prerequisites.** The installer already contains the .NET 8 runtime and the
+Tesseract 5 OCR engine.
+
+| Download | Use it when |
+|---|---|
+| ``ScreenTextCopy-Setup-$version-win-x64.exe`` | You want the normal one-click install (per-user, no administrator password). |
+| ``ScreenTextCopy-$version-win-x64-portable.zip`` | You want to unzip and run, including from a USB stick. |
+| ``SHA256SUMS.txt`` | You want to verify your download. |
+
+Windows SmartScreen may warn that the publisher is unknown, because these builds
+are not code-signed. Choose **More info -> Run anyway**, or verify the checksum
+first:
+
+``````powershell
+Get-FileHash .\ScreenTextCopy-Setup-$version-win-x64.exe -Algorithm SHA256
+``````
+
+See [CHANGELOG.md](https://github.com/${{ github.repository }}/blob/main/CHANGELOG.md)
+for what changed.
+"@
+
+          # --generate-notes appends the commit/PR list underneath these notes.
+          gh release create $tag `
+            (Get-ChildItem release/*.exe, release/*.zip, release/SHA256SUMS.txt | ForEach-Object { $_.FullName }) `
+            --title "ScreenTextCopy $version" `
+            --notes $notes `
+            --generate-notes

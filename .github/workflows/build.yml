@@ -1,0 +1,78 @@
+# Continuous integration: prove that every push and pull request still compiles
+# cleanly. This job deliberately does NOT need the Tesseract engine - the OCR
+# binaries are content files, so `dotnet build` succeeds without them. Producing
+# a runnable payload is the release workflow's job.
+name: Build
+
+on:
+  push:
+    branches: [main]
+    paths-ignore:
+      - '**.md'
+      - 'docs/**'
+      - '.github/ISSUE_TEMPLATE/**'
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    # WPF can only be built on Windows.
+    runs-on: windows-latest
+
+    steps:
+      - name: Check out the repository
+        uses: actions/checkout@v6
+
+      - name: Set up the .NET 8 SDK
+        uses: actions/setup-dotnet@v5
+        with:
+          dotnet-version: 8.0.x
+
+      - name: Restore NuGet packages
+        run: dotnet restore ScreenTextCopy.sln
+
+      - name: Build (Release)
+        # -warnaserror keeps the "0 warnings, 0 errors" rule enforceable instead
+        # of aspirational: a new warning fails the build here, not in review.
+        run: dotnet build ScreenTextCopy.sln --configuration Release --no-restore -warnaserror
+
+      - name: Verify the localization files stay in sync
+        shell: pwsh
+        run: |
+          # Every UI string must exist in both locales. A key present in one file
+          # and missing from the other renders as a raw key at runtime, which is
+          # easy to miss in review and impossible to miss for a Persian user.
+          $en = (Get-Content src/ScreenTextCopy/Localization/en.json -Raw | ConvertFrom-Json).PSObject.Properties.Name
+          $fa = (Get-Content src/ScreenTextCopy/Localization/fa.json -Raw | ConvertFrom-Json).PSObject.Properties.Name
+
+          $missingInFa = $en | Where-Object { $_ -notin $fa }
+          $missingInEn = $fa | Where-Object { $_ -notin $en }
+
+          if ($missingInFa) { Write-Host "::error::Missing from fa.json: $($missingInFa -join ', ')" }
+          if ($missingInEn) { Write-Host "::error::Missing from en.json: $($missingInEn -join ', ')" }
+          if ($missingInFa -or $missingInEn) { exit 1 }
+
+          Write-Host "en.json and fa.json both define $($en.Count) keys."
+
+      - name: Publish a framework-dependent build (smoke test)
+        # Not shipped anywhere - this only proves the publish pipeline itself is
+        # healthy. The real, self-contained payload is built by release.yml.
+        run: >
+          dotnet publish src/ScreenTextCopy/ScreenTextCopy.csproj
+          --configuration Release
+          --runtime win-x64
+          --self-contained false
+          -p:DebugType=none
+          --output artifacts/ci-win-x64
+
+      - name: Upload the CI build
+        uses: actions/upload-artifact@v4
+        with:
+          name: screentextcopy-ci-win-x64
+          path: artifacts/ci-win-x64
+          retention-days: 7
+          if-no-files-found: error

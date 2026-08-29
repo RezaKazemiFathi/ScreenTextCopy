@@ -1,0 +1,59 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <!-- ============ LIGHT PALETTE ============ -->
+    <!-- Warm, hand-tuned neutrals (a touch of warmth in the greys so the UI
+         doesn't read as a cold stock template). Input surfaces are deliberately
+         a step darker than cards so field content is always separated from its
+         container. Controls.xaml references these keys so the same control
+         definitions work in both themes just by swapping this file. -->
+
+    <Color x:Key="BackgroundColor">#F4F2EE</Color>
+    <Color x:Key="SurfaceColor">#FCFBF8</Color>
+    <Color x:Key="SurfaceAltColor">#EBE7DF</Color>
+    <Color x:Key="SurfaceHoverColor">#E0DBD0</Color>
+    <Color x:Key="BorderColor">#DED8CC</Color>
+    <Color x:Key="BorderStrongColor">#C4BBA9</Color>
+
+    <Color x:Key="TextPrimaryColor">#2A2724</Color>
+    <Color x:Key="TextSecondaryColor">#5C564D</Color>
+    <Color x:Key="TextMutedColor">#8A8275</Color>
+    <Color x:Key="TextOnAccentColor">#FFFFFF</Color>
+
+    <Color x:Key="PrimaryColor">#0E8C7F</Color>
+    <Color x:Key="PrimaryHoverColor">#0B776C</Color>
+    <Color x:Key="PrimaryPressedColor">#095E55</Color>
+    <Color x:Key="SecondaryColor">#12A594</Color>
+    <Color x:Key="AccentColor">#E0642A</Color>
+    <Color x:Key="AccentHoverColor">#C4501B</Color>
+    <Color x:Key="DestructiveColor">#CB3A34</Color>
+    <Color x:Key="SuccessColor">#2E9E58</Color>
+    <Color x:Key="WarningColor">#C98213</Color>
+
+    <Color x:Key="ShadowColor">#1A2A2724</Color>
+    <Color x:Key="OverlayScrimColor">#59000000</Color>
+
+    <!-- Brushes -->
+    <SolidColorBrush x:Key="BackgroundBrush" Color="{StaticResource BackgroundColor}" />
+    <SolidColorBrush x:Key="SurfaceBrush" Color="{StaticResource SurfaceColor}" />
+    <SolidColorBrush x:Key="SurfaceAltBrush" Color="{StaticResource SurfaceAltColor}" />
+    <SolidColorBrush x:Key="SurfaceHoverBrush" Color="{StaticResource SurfaceHoverColor}" />
+    <SolidColorBrush x:Key="BorderBrush" Color="{StaticResource BorderColor}" />
+    <SolidColorBrush x:Key="BorderStrongBrush" Color="{StaticResource BorderStrongColor}" />
+
+    <SolidColorBrush x:Key="TextPrimaryBrush" Color="{StaticResource TextPrimaryColor}" />
+    <SolidColorBrush x:Key="TextSecondaryBrush" Color="{StaticResource TextSecondaryColor}" />
+    <SolidColorBrush x:Key="TextMutedBrush" Color="{StaticResource TextMutedColor}" />
+    <SolidColorBrush x:Key="TextOnAccentBrush" Color="{StaticResource TextOnAccentColor}" />
+
+    <SolidColorBrush x:Key="PrimaryBrush" Color="{StaticResource PrimaryColor}" />
+    <SolidColorBrush x:Key="PrimaryHoverBrush" Color="{StaticResource PrimaryHoverColor}" />
+    <SolidColorBrush x:Key="PrimaryPressedBrush" Color="{StaticResource PrimaryPressedColor}" />
+    <SolidColorBrush x:Key="SecondaryBrush" Color="{StaticResource SecondaryColor}" />
+    <SolidColorBrush x:Key="AccentBrush" Color="{StaticResource AccentColor}" />
+    <SolidColorBrush x:Key="AccentHoverBrush" Color="{StaticResource AccentHoverColor}" />
+    <SolidColorBrush x:Key="DestructiveBrush" Color="{StaticResource DestructiveColor}" />
+    <SolidColorBrush x:Key="SuccessBrush" Color="{StaticResource SuccessColor}" />
+    <SolidColorBrush x:Key="WarningBrush" Color="{StaticResource WarningColor}" />
+
+</ResourceDictionary>

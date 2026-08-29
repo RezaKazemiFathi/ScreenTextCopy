@@ -1,0 +1,36 @@
+# Let Git decide what is text, and normalise those files to LF in the repository.
+* text=auto
+
+# --------------------------------------------------------------- source / docs
+*.cs        text diff=csharp
+*.csproj    text
+*.sln       text eol=crlf
+*.xaml      text
+*.json      text
+*.md        text
+*.yml       text
+*.yaml      text
+*.editorconfig text
+
+# Windows-only tooling that must keep CRLF or it breaks.
+*.ps1       text eol=crlf
+*.cmd       text eol=crlf
+*.bat       text eol=crlf
+*.iss       text eol=crlf
+
+# ------------------------------------------------------------------- binaries
+*.png       binary
+*.jpg       binary
+*.ico       binary
+*.ttf       binary
+*.otf       binary
+*.dll       binary
+*.exe       binary
+*.zip       binary
+*.traineddata binary
+
+# ----------------------------------------------------- release-archive hygiene
+# Keep repository metadata out of GitHub's auto-generated source archives.
+.gitattributes  export-ignore
+.gitignore      export-ignore
+.github/        export-ignore

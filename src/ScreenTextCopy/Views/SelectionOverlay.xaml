@@ -1,0 +1,46 @@
+<Window x:Class="ScreenTextCopy.Views.SelectionOverlay"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        WindowStyle="None"
+        AllowsTransparency="True"
+        Background="#01000000"
+        ShowInTaskbar="False"
+        Topmost="True"
+        ResizeMode="NoResize"
+        FlowDirection="LeftToRight"
+        Cursor="None">
+    <Grid x:Name="RootGrid">
+        <!-- Dim scrim over the whole virtual desktop -->
+        <Rectangle x:Name="Scrim" Fill="#59000000" />
+
+        <Canvas x:Name="OverlayCanvas">
+            <!-- Full-height / full-width crosshair guides that follow the cursor -->
+            <Line x:Name="CrossV" Stroke="#802DD4BF" StrokeThickness="1" Y1="0" />
+            <Line x:Name="CrossH" Stroke="#802DD4BF" StrokeThickness="1" X1="0" />
+
+            <!-- The selection rectangle -->
+            <Border x:Name="SelectionBox"
+                    BorderBrush="#2DD4BF" BorderThickness="2"
+                    Background="#182DD4BF"
+                    Visibility="Collapsed" />
+
+            <!-- Live size badge (physical pixels) -->
+            <Border x:Name="SizeBadge"
+                    Background="#F0141821" CornerRadius="6" Padding="8,4"
+                    Visibility="Collapsed">
+                <TextBlock x:Name="SizeText" Foreground="#2DD4BF" FontSize="12"
+                           FontFamily="Consolas, Segoe UI" FontWeight="SemiBold" />
+            </Border>
+        </Canvas>
+
+        <!-- Hint -->
+        <Border VerticalAlignment="Top" HorizontalAlignment="Center" Margin="0,40,0,0"
+                Background="#F0141821" CornerRadius="999" Padding="18,9">
+            <StackPanel Orientation="Horizontal">
+                <TextBlock x:Name="HintText" Foreground="#E6EAF0" FontSize="13"
+                           FontFamily="Segoe UI" VerticalAlignment="Center"
+                           Text="Drag to select  ·  Esc / right-click to cancel" />
+            </StackPanel>
+        </Border>
+    </Grid>
+</Window>

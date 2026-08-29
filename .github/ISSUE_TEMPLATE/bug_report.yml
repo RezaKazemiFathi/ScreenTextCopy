@@ -1,0 +1,119 @@
+name: 🐞 Bug report
+description: Something does not work the way it should
+title: "[Bug]: "
+labels: [bug]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for taking the time to report this.
+
+        **Please do not paste an API key, token or password anywhere in this
+        issue.** Issues are public. If the problem involves a credential,
+        describe it without the value.
+
+        Before filing, it is worth checking
+        [docs/TROUBLESHOOTING.md](https://github.com/rezakazemifathi/ScreenTextCopy/blob/main/docs/TROUBLESHOOTING.md)
+        — most connection and hotkey reports are already answered there.
+
+  - type: checkboxes
+    id: preflight
+    attributes:
+      label: Before you file
+      options:
+        - label: I read the troubleshooting guide and my problem is not covered there.
+          required: true
+        - label: I searched existing issues and this is not a duplicate.
+          required: true
+        - label: This issue contains no API keys, tokens or passwords.
+          required: true
+
+  - type: input
+    id: version
+    attributes:
+      label: ScreenTextCopy version
+      description: Shown in Settings, or the version in the installer file name.
+      placeholder: "2.0.0"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: install-type
+    attributes:
+      label: How did you install it?
+      options:
+        - Installer (ScreenTextCopy-Setup-*.exe)
+        - Portable zip
+        - Built from source
+    validations:
+      required: true
+
+  - type: input
+    id: windows
+    attributes:
+      label: Windows version
+      description: Run `winver` and copy the version and build number.
+      placeholder: "Windows 11 Pro 24H2 (build 26100.xxxx)"
+    validations:
+      required: true
+
+  - type: textarea
+    id: what-happened
+    attributes:
+      label: What happened?
+      description: What you expected, and what actually happened instead.
+    validations:
+      required: true
+
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce
+      placeholder: |
+        1. Press Ctrl + Shift + X
+        2. Drag a box around ...
+        3. ...
+    validations:
+      required: true
+
+  - type: textarea
+    id: error-text
+    attributes:
+      label: Exact error message
+      description: Copy the full text of any error the app showed. Redact keys and hostnames you would rather not publish.
+      render: text
+
+  - type: dropdown
+    id: area
+    attributes:
+      label: Which part of the app?
+      multiple: true
+      options:
+        - Screen capture / region selection
+        - OCR accuracy
+        - OCR language packs
+        - Translation (free provider)
+        - Translation (custom AI provider)
+        - In-place overlay translation (Ctrl + Shift + Z)
+        - Global hotkeys
+        - Send to phone / QR code
+        - Settings window
+        - Theme or layout (light/dark, English/Persian)
+        - Tray icon
+        - Installer or uninstaller
+        - Something else
+
+  - type: textarea
+    id: config
+    attributes:
+      label: Relevant settings
+      description: |
+        Useful for translation and network problems: UI language, OCR languages,
+        translation provider, network mode (System proxy / Direct / Manual) and
+        the model name. **Never include the API key itself.**
+
+  - type: textarea
+    id: extra
+    attributes:
+      label: Anything else?
+      description: Screenshots help a great deal — you can drag images straight into this box.

@@ -1,0 +1,72 @@
+name: ✨ Feature request
+description: Suggest something ScreenTextCopy should be able to do
+title: "[Feature]: "
+labels: [enhancement]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Good feature requests describe a problem first and a solution second —
+        that leaves room for a better solution than the one you had in mind.
+
+  - type: textarea
+    id: problem
+    attributes:
+      label: What problem would this solve?
+      description: What are you trying to do today, and what makes it awkward or impossible?
+    validations:
+      required: true
+
+  - type: textarea
+    id: proposal
+    attributes:
+      label: What would you like to happen?
+    validations:
+      required: true
+
+  - type: dropdown
+    id: area
+    attributes:
+      label: Which part of the app would this touch?
+      multiple: true
+      options:
+        - Screen capture / region selection
+        - OCR
+        - OCR languages
+        - Translation providers
+        - In-place overlay translation
+        - Hotkeys
+        - Send to phone
+        - Settings
+        - Themes and layout
+        - UI languages / localization
+        - Packaging and installer
+        - Documentation
+        - Something else
+
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives you considered
+      description: Including other tools that already do this, and what you dislike about how they do it.
+
+  - type: checkboxes
+    id: constraints
+    attributes:
+      label: Does your idea fit the project's constraints?
+      description: |
+        These are deliberate design decisions, not oversights. A request that
+        breaks one of them is not automatically rejected, but it needs a strong
+        argument.
+      options:
+        - label: It does not require a user account, a server run by the project, or telemetry.
+        - label: It does not send screen contents anywhere the user has not explicitly chosen.
+        - label: It keeps working offline, or degrades gracefully when offline.
+        - label: It does not require the app to run elevated (as administrator).
+
+  - type: checkboxes
+    id: help
+    attributes:
+      label: Would you like to implement it?
+      options:
+        - label: I would be willing to open a pull request for this.

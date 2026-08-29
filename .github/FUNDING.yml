@@ -1,0 +1,6 @@
+# Shows a "Sponsor" button on the repository page.
+# Daramet and Donatr.ee are not among GitHub's built-in providers, so they go
+# under `custom`, which accepts up to four arbitrary URLs.
+custom:
+  - https://daramet.com/RKFi
+  - https://donatr.ee/rkfcode/

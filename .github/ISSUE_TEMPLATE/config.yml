@@ -1,0 +1,20 @@
+# Only the two structured templates above are offered; free-form issues are
+# disabled so every report arrives with a version and reproduction steps.
+blank_issues_enabled: false
+
+contact_links:
+  - name: 📖 Troubleshooting guide
+    url: https://github.com/rezakazemifathi/ScreenTextCopy/blob/main/docs/TROUBLESHOOTING.md
+    about: Concrete fixes for the problems people hit most — connection errors, hotkey clashes and OCR accuracy.
+
+  - name: 📥 Install guide
+    url: https://github.com/rezakazemifathi/ScreenTextCopy/blob/main/docs/INSTALL.md
+    about: Step-by-step installation, including the SmartScreen warning and the portable build.
+
+  - name: 💬 Questions and ideas
+    url: https://github.com/rezakazemifathi/ScreenTextCopy/discussions
+    about: Ask how something works, or float an idea before opening a feature request.
+
+  - name: 🔒 Report a security vulnerability
+    url: https://github.com/rezakazemifathi/ScreenTextCopy/security/advisories/new
+    about: Please report vulnerabilities privately here — never in a public issue.

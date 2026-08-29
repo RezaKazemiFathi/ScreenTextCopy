@@ -1,0 +1,34 @@
+# ---------------------------------------------------------------- build output
+bin/
+obj/
+artifacts/
+publish/
+release/
+
+# ------------------------------------------------------------------ IDE / tools
+.vs/
+.vscode/
+.idea/
+*.user
+*.suo
+*.userprefs
+*.sln.docstates
+*.DotSettings.user
+
+# ------------------------------------------------------------------- Tesseract
+# The OCR engine is ~200 MB and one of its files, libtesseract-5.dll, is about
+# 106 MB - above GitHub's hard 100 MB per-file limit. It is therefore NOT
+# committed. Contributors run scripts\fetch-tesseract.ps1 once after cloning;
+# released builds already contain it.
+src/ScreenTextCopy/Tesseract/
+
+# ------------------------------------------------------------------------ misc
+*.log
+*.tmp
+Thumbs.db
+desktop.ini
+.DS_Store
+
+# ------------------------------------------------------------- local settings
+**/settings.json
+
