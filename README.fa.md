@@ -20,7 +20,11 @@
 
 ### [⬇️ دانلود نصب‌کننده](https://github.com/rezakazemifathi/ScreenTextCopy/releases/latest)
 
-هیچ پیش‌نیازی لازم نیست. نه نصب .NET، نه نصب Tesseract. یک فایل، یک کلیک.
+هیچ پیش‌نیازی لازم نیست. نه نصب .NET،نه نصب Tesseract. یک فایل، یک کلیک.
+
+## 🎬 عملکرد ScreenTextCopy را در بازی مشاهده کنید
+
+![ScreenTextCopy Demo](docs/assets/demo.gif)
 
 </div>
 
